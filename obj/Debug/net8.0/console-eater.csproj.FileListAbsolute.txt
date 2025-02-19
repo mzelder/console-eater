@@ -1,0 +1,14 @@
+/Users/maciejzelder/dev-cc/console-eater/bin/Debug/net8.0/console-eater
+/Users/maciejzelder/dev-cc/console-eater/bin/Debug/net8.0/console-eater.deps.json
+/Users/maciejzelder/dev-cc/console-eater/bin/Debug/net8.0/console-eater.runtimeconfig.json
+/Users/maciejzelder/dev-cc/console-eater/bin/Debug/net8.0/console-eater.dll
+/Users/maciejzelder/dev-cc/console-eater/bin/Debug/net8.0/console-eater.pdb
+/Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/console-eater.GeneratedMSBuildEditorConfig.editorconfig
+/Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/console-eater.AssemblyInfoInputs.cache
+/Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/console-eater.AssemblyInfo.cs
+/Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/console-eater.csproj.CoreCompileInputs.cache
+/Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/console-eater.dll
+/Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/refint/console-eater.dll
+/Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/console-eater.pdb
+/Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/console-eater.genruntimeconfig.cache
+/Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/ref/console-eater.dll
