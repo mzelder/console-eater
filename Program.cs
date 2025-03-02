@@ -16,25 +16,32 @@ char snakeHeadEmote = '□';
 char snakeBodyEmote = '■';
 
 // 0 - left, 1 - up, 2 - right, 3 - down
+int previousDirection;
 int direction = 0;
 
 Initialize();
 
 while (true) {
     if (Console.KeyAvailable) {
+        previousDirection = direction;
         keyInfo = Console.ReadKey();
         switch (keyInfo.Key)
         {
             case ConsoleKey.UpArrow:
+                // Ignore changing direction if the direction is opposite to the current one
+                if (previousDirection == 3) break;
                 direction = 1;
                 break;
             case ConsoleKey.DownArrow:
+                if (previousDirection == 1) break;
                 direction = 3;
                 break;
             case ConsoleKey.LeftArrow:
+                if (previousDirection == 2) break;
                 direction = 0;
                 break;
             case ConsoleKey.RightArrow:
+                if (previousDirection == 0) break;
                 direction = 2;
                 break;
         }
@@ -57,7 +64,6 @@ while (true) {
 
 void Initialize() {
     Console.CursorVisible = false;
-    //ResizeWindow();
     GenerateApple();
     UpdateUI();
 }
@@ -100,40 +106,3 @@ void MoveSnake() {
             break;
     }   
 } 
-
-void ResizeWindow() {
-    try
-    {
-        ProcessStartInfo psi = new ProcessStartInfo
-        {
-            FileName = "osascript",
-            Arguments = "-e \"tell application \\\"Terminal\\\" to set bounds of front window to {100, 100, 800, 800}\"",
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-            UseShellExecute = false,
-            CreateNoWindow = true
-        };
-
-        using (Process process = Process.Start(psi))
-        {
-            // Capture the output and error
-            string output = process.StandardOutput.ReadToEnd();
-            string error = process.StandardError.ReadToEnd();
-            
-            process.WaitForExit();
-            
-            if (!string.IsNullOrEmpty(output))
-            {
-                Console.WriteLine("Output: " + output);
-            }
-            if (!string.IsNullOrEmpty(error))
-            {
-                Console.WriteLine("Error: " + error);
-            }
-        }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine("An error occurred: " + ex.Message);
-    }
-}
