@@ -12,3 +12,4 @@
 /Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/console-eater.pdb
 /Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/console-eater.genruntimeconfig.cache
 /Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/ref/console-eater.dll
+/Users/maciejzelder/dev-cc/console-eater/obj/Debug/net8.0/console-eater.sourcelink.json
