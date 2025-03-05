@@ -19,42 +19,44 @@ char snakeBodyEmote = '■';
 
 // 0 - left, 1 - up, 2 - right, 3 - down
 int previousDirection;
-int direction = 0;
 
-SnakeElement head = new SnakeElement(positionX, positionY, direction);
-SnakeElement body = new SnakeElement(positionX+1, positionY, direction);
-SnakeElement[] snakeElements = { head, body };
+SnakeElement head = new SnakeElement(positionX, positionY, 0);
+SnakeElement[] snakeElements = { head };
 
 Initialize();
 
 while (true) {
     if (Console.KeyAvailable) {
-        previousDirection = direction;
+        previousDirection = head.Direction;
         keyInfo = Console.ReadKey();
         switch (keyInfo.Key)
         {
             case ConsoleKey.UpArrow:
                 // Ignore changing direction if the direction is opposite to the current one
                 if (previousDirection == 3) break;
-                direction = 1;
+                head.Direction = 1;
                 break;
             case ConsoleKey.DownArrow:
                 if (previousDirection == 1) break;
-                direction = 3;
+                head.Direction = 3;
                 break;
             case ConsoleKey.LeftArrow:
                 if (previousDirection == 2) break;
-                direction = 0;
+                head.Direction = 0;
                 break;
             case ConsoleKey.RightArrow:
                 if (previousDirection == 0) break;
-                direction = 2;
+                head.Direction = 2;
                 break;
         }
     }
     
     // Move snake every second
     MoveSnake();
+
+    if (Collision()) {
+        Environment.Exit(0);
+    }
 
     // Check if apple was eaten, if so then generate new one
     // Add +1 to score when apple eaten
@@ -67,7 +69,7 @@ while (true) {
     UpdateUI();
     
     // So the snake will be faster in up-down directions (no more explanation needed )
-    if (direction % 2 == 0)
+    if (head.Direction % 2 == 0)
         Thread.Sleep(60);
     else 
         Thread.Sleep(120);
@@ -116,7 +118,7 @@ void MoveSnake() {
     int prevY = snakeElements[0].PositionY;
     int prevDirect = snakeElements[0].Direction;
     
-    switch (direction) {
+    switch (head.Direction) {
             case 0:
                 snakeElements[0].PositionX--;
                 break;
@@ -164,3 +166,19 @@ void AddSnakeElement() {
     Array.Resize(ref snakeElements, snakeElements.Length + 1);
     snakeElements[snakeElements.Length - 1] = newElement;
 } 
+
+bool Collision() {
+    // If snake head hit his body
+    for (int i = 1; i < snakeElements.Length; i++) {
+        if (head.PositionX == snakeElements[i].PositionX && head.PositionY == snakeElements[i].PositionY) {
+            return true;
+        }
+    }
+    
+    // If snake head hit boundary of the console 
+    if ((0 > head.PositionX || head.PositionX > w) || (0 > head.PositionY || head.PositionY > h)) {
+        return true;
+    }
+
+    return false;
+}
