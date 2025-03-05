@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("console-eater")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+27b8356b09ae3be32ec16e2b18d67d1f81b2d87d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b1ffa23733a504117c422263f6ca053582d3b75")]
 [assembly: System.Reflection.AssemblyProductAttribute("console-eater")]
 [assembly: System.Reflection.AssemblyTitleAttribute("console-eater")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

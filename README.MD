@@ -26,8 +26,8 @@ A simple **Snake Game** implemented in **C#** for the console. The game features
 ## Installation & Running
 1. **Clone or Download** the repository:
    ```sh
-   git clone https://github.com/your-repo/snake-game.git
-   cd snake-game
+   git clone https://github.com/mzelder/console-eater.git
+   cd console-eater
    ```
 2. **Run the game** using .NET CLI:
    ```sh
