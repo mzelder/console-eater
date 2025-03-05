@@ -1,8 +1,12 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq.Expressions;
 
 ConsoleKeyInfo keyInfo;
 Random rnd = new Random();
+
+bool lost = false;
+bool win = false;
 
 var w = Console.WindowWidth;
 var h = Console.WindowHeight;
@@ -54,9 +58,8 @@ while (true) {
     // Move snake every second
     MoveSnake();
 
-    if (Collision()) {
-        Environment.Exit(0);
-    }
+    if (Collision()) lost = true;
+    if (Win()) win = true;
 
     // Check if apple was eaten, if so then generate new one
     // Add +1 to score when apple eaten
@@ -83,7 +86,17 @@ void Initialize() {
 
 void UpdateUI() {
     Console.Clear();
-    
+
+    // user lost
+    if (lost || win) {
+        string caption = lost ? $"Your finall score: {score}" : "CONGRATS! YOU WON!";
+        Console.SetCursorPosition(w / 2 - caption.Length / 2, h / 2);
+        Console.Write(caption);
+        Thread.Sleep(5000);
+        Console.Clear();
+        Environment.Exit(0);
+    }
+
     // show whole snake
     int counter = 0;
     foreach (var snakeElement in snakeElements) { 
@@ -181,4 +194,8 @@ bool Collision() {
     }
 
     return false;
+}
+
+bool Win() {
+    return score == w * h;
 }
